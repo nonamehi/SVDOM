@@ -75,7 +75,7 @@ class Csvdom_cfg_node extends uvm_object;
      AttributeNotAllUsedCheckF = attributeIsUsed.sum() with (TYPE_SVDOM_CFG_DOM_WIDTH'(item)) != attributeIsUsed.size();
       if (AttributeNotAllUsedCheckF && iCheckEna) begin
          PrintNodeF();
-         `EV_PRINT_FATAL(get_full_name(),"AttributeNotAllUsedCheckF");
+         `UVM_FATAL(get_full_name(),"AttributeNotAllUsedCheckF");
       end
    endfunction // AttributeNotAllUsedCheckF
       
@@ -114,7 +114,7 @@ class Csvdom_cfg_node extends uvm_object;
          return this;
       end
       if (iCheckEna) begin
-         `EV_PRINT_FATAL("",$sformatf("can't find nodename : %s",iNodeName));
+         `UVM_FATAL("",$sformatf("can't find nodename : %s",iNodeName));
       end
    endfunction // __GetNodeByNameQF
    
@@ -137,7 +137,7 @@ class Csvdom_cfg_node extends uvm_object;
          return this.attributeList[iAttributeName];
       end
       if (iCheckEna) begin
-         `EV_PRINT_FATAL("",$sformatf("can't find attribute : %s in %s",iAttributeName,get_full_name()));
+         `UVM_FATAL("",$sformatf("can't find attribute : %s in %s",iAttributeName,get_full_name()));
       end else begin
          return "";
       end
